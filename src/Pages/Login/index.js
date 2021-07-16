@@ -2,8 +2,25 @@ import React from 'react';
 import './styles.css';
 import LoginImg from '../../assets/loginLogo.png';
 import LaptopChromebookIcon from '@material-ui/icons/LaptopChromebook';
+import GoogleLoginComponent from '../../Components/GoogleLoginComponent';
+import server from '../../service/apiService';
+
+const responseFailure = () => {
+  console.log("FAILLLLLLLLLLLLLLLLLLLLLLLLLLl");
+}
+
+const responseSuccess = (data) => {
+  console.log("SUCESSSSSSSSSSSSSSSSSSSSS", data);
+  server
+    .post(`http://localhost:8000/api/v1/mathexp/users/google`,{tokenId: data.tokenId})
+    .then((data) => {
+      console.log("🚀 ~ file: index.js ~ line 16 ~ .then ~ data", data)
+      return data
+    });
+}
 
 export default function Login() {
+
   return (
     <div className="login__container">
       {/* <div className="login__image__section">
@@ -37,9 +54,7 @@ export default function Login() {
           <br></br>
           {/* <h3> OR </h3> */}
           <div className="login__third__party">
-            <div className=" login__btn login__via__google">
-              Login with Google
-            </div>
+            <GoogleLoginComponent responseSuccess={responseSuccess} responseFailure={responseFailure} />
           </div>
         </div>
       </div>

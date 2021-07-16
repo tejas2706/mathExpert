@@ -8,9 +8,9 @@ exports.get = async (path) => {
   }
 };
 
-exports.post = async (path) => {
+exports.post = async (path, data) => {
   try {
-    return await axios.post(path);
+    return await axios.post(path,data);
   } catch (err) {
     console.log('Error while fetching data: ', err);
   }

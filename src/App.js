@@ -20,15 +20,19 @@ import Footer from './Components/Footer';
 
 import ChooseContent from './Pages/ChooseContent';
 import LearningTrack from './Pages/LearningTrack';
+import config from './config/app';
 
 function App() {
+  console.log("-------------------", window.location.pathname, config.noDisplayHeader);
   return (
     <Provider store={store} >
       <PersistGate loading={null} persistor={persistor}>
         <Router>
           <div className="app__root">
-            <Navbar />
+            
+              <Navbar />
             <Switch>
+            {/* {!config.noDisplayHeader.includes(window.location.pathname) ? <Navbar /> : null} */}
               <Route path="/profile" component={Profile} />
               <Route path="/topicDetails" exact component={TopicDetails} />
               <Route path="/" exact component={Home} />
