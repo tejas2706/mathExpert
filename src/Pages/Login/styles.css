@@ -101,3 +101,11 @@
         background-size: contain;
     }
 }
+
+.login__error{
+    color: red;
+    border-radius: 5px;
+    word-wrap: normal;
+    padding: 3px 10px ;
+    font-weight: bold;
+}

@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import './styles.css';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+import { connect } from 'react-redux';
+import GoogleLogOutComponent from '../GoogleLogOutComponent';
+import _ from "lodash";
 
-function Navbar() {
+function Navbar({ isLoggedIn, setIsLoggedIn}) {
   const [navBgShow, setnavBgShow] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -47,11 +50,17 @@ function Navbar() {
     setOpen(true);
   };
 
+  const logout = () => {
+    localStorage.removeItem('jwt_token');
+    setIsLoggedIn(false);
+  }
+
   return (
     <div
       className={`navbar__container ${
         navBgShow && 'navbar__container_withBg'
       }`}>
+        {_.isEmpty(isLoggedIn) ? <Redirect push to='/'></Redirect>:null}
       <div id="sidenav" className="navbar__sidenav">
         <a href="javascript:void(0)" className="closebtn" onClick={closeNav}>
           &times;
@@ -83,9 +92,18 @@ function Navbar() {
           <Link to="/faq">FAQ's</Link>
         </h4>
       </div>
-      <Link to="/login">
-        <button className="navbar__loginBtn">Login</button>
-      </Link>
+      {
+        !_.isEmpty(isLoggedIn)
+        ?
+        <div className="navbar__profileData">
+          <h3>Hi , {isLoggedIn.username}</h3>
+          <GoogleLogOutComponent logout={logout}/>
+        </div>
+        :
+        <Link to="/login">
+          <button className="navbar__loginBtn">Login</button>
+        </Link>
+      }
       {open && (
         <div>
           <Modal
@@ -123,4 +141,17 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+const mapStateToProps = (state) => {
+  return {
+    isLoggedIn: state.selectedFieldsReducer.isLoggedIn
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  //TODO: MOVE actions into the separate file 
+  return {
+    setIsLoggedIn: (login) => dispatch({ type: "SET_IS_LOGGEDIN", payload: { isLoggedIn: login } }),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
