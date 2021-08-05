@@ -5,16 +5,20 @@ import RotatingCube from '../RotatingCube';
 import DoubleArrowIcon from '@material-ui/icons/DoubleArrow';
 import { makeStyles } from '@material-ui/core/styles';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+import WbIncandescentIcon from '@material-ui/icons/WbIncandescent';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
-import Fade from '@material-ui/core/Fade';
+import {Fade, Slide } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import DidYouKnow from '../../assets/didyouknow.jpg'
 
 function Banner() {
   const [quoteDetails, setquoteDetails] = useState(
     mathQuotes[Math.ceil(Math.random() * 5)],
   );
   const [open, setOpen] = useState(false)
+  const [factsModalOpened, setFactsModalOpened] = useState(false)
+
 
   // useEffect(() => {
   //     function changeQuote(){
@@ -68,6 +72,21 @@ function Banner() {
   }
 
 
+  const FactsContent = () => {
+    return (
+      <>
+        <div className="factsContent__upperContent">
+          {/* <img src={DidYouKnow} width={200} height={200}/> */}
+          <h1 className="factsContent__title">Here's your <span className="factContent__title__word">Fact</span> for the day.</h1>
+        </div>
+        <div className="factsContent__lowerContent">
+          <p className="factsContent__text1">Did You Know ?  <WbIncandescentIcon fontSize="large" /></p>
+          <p className="factsContent__text1">{quoteDetails.quote}.</p>
+        </div>
+      </>
+    )
+  }
+
   const getStartedModal = () => {
     return (
       <div>
@@ -96,13 +115,41 @@ function Banner() {
       </div>);
   }
 
+  const factsModal = () => {
+    return (
+      <div>
+        <Modal
+          aria-labelledby="transition-modal-title"
+          aria-describedby="transition-modal-description"
+          className={classes.modal}
+          open={factsModalOpened}
+          onClose={handleClose}
+          closeAfterTransition
+          BackdropComponent={Backdrop}
+          BackdropProps={{
+            timeout: 500,
+          }}>
+          <Slide direction="down"in={factsModalOpened} mountOnEnter unmountOnExit>
+            <div className="banner__getStartedModal">
+              <div className="banner__getStartedModal_title">
+                <HighlightOffIcon onClick={() => setFactsModalOpened(false)} />
+              </div>
+              <div className="banner__getStartedModal_Content">
+                <FactsContent />
+              </div>
+            </div>
+          </Slide>
+        </Modal>
+      </div>);
+  }
+
   return (
     <div className="banner__container">
       <div className="banner__image">
         <div className="banner__imageTitle">
           <h2>Hit ↯ to explore the question of the day !!</h2>
         </div>
-        <RotatingCube />
+        <RotatingCube onClick={() => setFactsModalOpened(true)}/>
       </div>
       <div className="banner_tagLine">
         <h1>Prepare for the olympiads with Competitive Prep.</h1>
@@ -124,6 +171,7 @@ function Banner() {
           <span>Get Started</span>
         </button>
         {getStartedModal()}
+        {factsModal()}
       </div>
       {/* <div className="banner__quotes">
                 <p></p>

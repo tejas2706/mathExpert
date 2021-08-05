@@ -4,17 +4,17 @@
     align-items: center;
     justify-content: space-around;
     flex-wrap: wrap;
-    background-color: whitesmoke;
-    /* background-image: url("../../assets/wooden.jpg"); */
+    background-color: #3F4A4F;
     width: 100%;
     position: fixed;
-    color: black;
+    color: white;
     top: 0;
     z-index: 1;
     transition: all 0.5s;
 }
 
 .navbar__container_withBg {
+    color: black;
     background-color: rgb(232, 228, 228); ;
     z-index: 1;
 }
@@ -24,6 +24,7 @@
     margin: 10px 20px;
     font-size: xx-large;
     cursor: pointer;
+    color: #F58279;
 }
 
 .navbar__title:hover {}
@@ -46,6 +47,7 @@
     /* color: white; */
     font-size: large;
     cursor: pointer;
+
 }
 
 .navbar__loginBtn {
@@ -164,6 +166,10 @@
     text-align: center;
     margin-top: 10px;
 
+}
+
+.navbar__container > h4 {
+    text-decoration: none;
 }
 
 @media (max-width: 750px){

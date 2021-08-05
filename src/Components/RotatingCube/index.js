@@ -5,9 +5,9 @@ import infinity from '../../assets/infinity.png';
 import alpha from '../../assets/alpha.png';
 import omega from '../../assets/omega.png';
 
-function RotatingCube() {
+function RotatingCube({onClick}) {
   return (
-    <div className="scene">
+    <div className="scene" onClick={onClick}>
       <div className="cube">
         <div className="cube__face cube__face--front">
           <img className="cube__image" alt="pi" src={pi}></img>

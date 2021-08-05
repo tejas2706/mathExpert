@@ -5,6 +5,8 @@ import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+import MathExpertLogo from '../../assets/mainLogo.svg';
+
 
 function Navbar() {
   const [navBgShow, setnavBgShow] = useState(false);
@@ -61,7 +63,7 @@ function Navbar() {
           <Link to="/content">Content</Link>
         </h4>
         <h4 className="navbar__item">
-          <Link to="/aboutUs">About Us</Link>
+          <Link className="navbar__item" to="/aboutUs">About Us</Link>
         </h4>
         <h4 className="navbar__item">FAQ's</h4>
       </div>
@@ -74,13 +76,13 @@ function Navbar() {
       <div className="navbar__items">
         <h4 className="navbar__item">What is MathsExpert ?</h4>
         <h4 className="navbar__item">
-          <Link to="/content">Content</Link>
+          <Link className="navbar__item" to="/content">Content</Link>
         </h4>
         <h4 className="navbar__item">
-          <Link to="/aboutUs">About Us</Link>
+          <Link className="navbar__item" to="/aboutUs">About Us</Link>
         </h4>
         <h4 className="navbar__item">
-          <Link to="/faq">FAQ's</Link>
+          <Link className="navbar__item"to="/faq">FAQ's</Link>
         </h4>
       </div>
       <Link to="/login">
