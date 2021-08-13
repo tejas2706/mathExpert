@@ -1,4 +1,3 @@
-import _ from "lodash";
 
 const selectedFields = (state = {}, action) => {
   switch (action.type) {
@@ -17,6 +16,9 @@ const selectedFields = (state = {}, action) => {
       break;
     case "SET_SELECTED_QUESTION_ID":
       state = { ...state, selectedQuestion: action.payload.questionId };
+      break;
+    case "SET_IS_LOGGEDIN":
+      state = { ...state, isLoggedIn: action.payload.isLoggedIn };
       break;
     default:
       break;

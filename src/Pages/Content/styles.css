@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     width: 100%;
     margin-top: 60px;
     padding: 20px;
@@ -10,9 +10,41 @@
 
 .content__classDropDown{
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     font-size: large;
+    width: 95%;
+    margin-bottom: 50px;
+}
+
+.content__classesDisplay{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 95%;
+}
+
+.content__eachClass{
+    margin: 5px;
+    padding: 3px;
+    width: fit-content;
+    min-width: 80px;
+    border: 2px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    font-size: larger;
+}
+
+.content__eachClass:hover{
+    background-color: black;
+    color: white;
+}
+
+.content__eachClass_img{
+    width: 40px;
 }
 
 .content__examsDisplay{
