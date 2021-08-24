@@ -14,6 +14,7 @@ import service from '../../service/apiService';
 import _ from 'lodash';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import loader from './loader.gif';
 
 function renderHexagons(
   difficultyLevel,
@@ -194,7 +195,7 @@ function TopicDetails({
           <div>{modal()}</div>
         </div>
       ) : (
-        <div>loading...</div>
+        <div className="topicDetails__container_loaderPage loader"><img className="loader_gif" src={loader}></img></div>
       )}
     </>
   );

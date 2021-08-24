@@ -15,7 +15,7 @@ function Login({ setIsLoggedIn }) {
     server
       .post(`http://localhost:8000/api/v1/mathexp/users/google`, { tokenId: data.tokenId })
       .then((responseData) => {
-        localStorage.setItem('jwt_token', responseData.data);
+        localStorage.setItem('jwt_token', responseData.data.token);
         setLogin(responseData.data.user);
         setIsLoggedIn(responseData.data.user);
         return responseData

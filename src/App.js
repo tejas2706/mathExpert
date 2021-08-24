@@ -46,7 +46,7 @@ function App() {
               <Route path="/chooseContent" component={ChooseContent} />
               <Route path="/LearningTrack" component={LearningTrack} />
             </Switch>
-            <Footer />
+            {/* <Footer /> */}
             {/* <QuizResult /> */}
             {/* <Home/> */}
             {/* <Questions /> */}

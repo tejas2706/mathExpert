@@ -1,4 +1,4 @@
-.topicDetails__container { 
+.topicDetails__container,.topicDetails__container_loaderPage { 
     width: 100%;
     display: flex;
     justify-content: center; 
@@ -202,4 +202,19 @@ h2{
     color: white;
     overflow-y: scroll;
     padding-top: 40px;
+}
+
+.topicDetails__container_loaderPage{
+    background-color: white;
+}
+
+.loader{
+    width: 100vw;
+    height: 100vh;
+    padding-top: 100px;
+}
+
+.loader_gif{
+    width: 100px;
+    height: 100px;
 }
